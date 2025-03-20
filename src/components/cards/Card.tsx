@@ -8,7 +8,7 @@ export default function Card({ count, position, text, icon }: Icard) {
   return (
     <div className="w-[24vw] h-[97px] rounded-3xl bg-white flex justify-center items-center gap-6">
       <div
-        className={`w-[68px] h-[68px] rounded-full ${
+        className={`w-[68px] h-[68px] rounded-full flex justify-center items-center ${
           position === 1
             ? "bg-[#FFF2F2]"
             : position === 2
