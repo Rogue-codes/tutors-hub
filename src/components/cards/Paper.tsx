@@ -1,4 +1,3 @@
-import { cicle } from "../../assets";
 interface IPaper {
   title: string;
   img: string;

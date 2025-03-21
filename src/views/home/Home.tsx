@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FaReceipt } from "react-icons/fa";
 import Card from "../../components/cards/Card";
 import Paper from "../../components/cards/Paper";
@@ -27,7 +28,7 @@ export default function Home() {
       title: "Status",
       dataIndex: "status",
       key: "status",
-      render: (status) => (
+      render: (status:any) => (
         <Tag color={status === "Completed" ? "green" : "volcano"}>{status}</Tag>
       ),
     },

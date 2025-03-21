@@ -80,20 +80,20 @@ export default function Student() {
       title: "Enrolled Date", 
       dataIndex: "enrolledDate", 
       key: "enrolledDate",
-      render: (date) => dayjs(date).format("MMMM D, YYYY") // Format for display
+      render: (date:any) => dayjs(date).format("MMMM D, YYYY") // Format for display
     },
     {
       title: "Status",
       dataIndex: "status",
       key: "status",
-      render: (status) => (
+      render: (status:any) => (
         <Tag color={status === "Active" ? "green" : "volcano"}>{status}</Tag>
       ),
     },
     {
       title: "Actions",
       key: "actions",
-      render: (row) => (
+      render: (row:any) => (
         <EyeOutlined className="text-xl cursor-pointer" onClick={()=>{
           handleGetStudent(row.id)
         }
