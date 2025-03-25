@@ -1,12 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from 'react'
 import { FaChevronDown } from 'react-icons/fa'
 
-interface IHeaderTab{
-    showModal: () => void;
-    btnText:string;
+interface IHeaderTab {
+    showModal?: () => void;
+    btnText: string;
+    hide?: boolean
+    page?: string;
 }
 
-export default function HeaderTab({showModal,btnText}:IHeaderTab) {
+export default function HeaderTab({ showModal, btnText, hide }: IHeaderTab) {
     const [showFilterOptions, setShowFilterOptions] = useState(false)
     const filterOptions = ["Alphabetically", "Newest", "Oldest", "Ongoing", "Closed", "Cancelled", "Completed"]
     return (
@@ -33,7 +36,7 @@ export default function HeaderTab({showModal,btnText}:IHeaderTab) {
 
                 </div>
 
-                <button className='px-6 py-2 rounded-md bg-[#12A454] text-sm text-white cursor-pointer' onClick={showModal}>{btnText}</button>
+                {!hide && <button className='px-6 py-2 rounded-md bg-[#12A454] text-sm text-white cursor-pointer' onClick={showModal}>{btnText}</button>}
             </div>
 
 

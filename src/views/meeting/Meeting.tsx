@@ -115,10 +115,13 @@ export default function Meeting() {
       ),
     },
   ];
+
+  const user = JSON.parse(localStorage.getItem("user-tutor")!);
+
   return (
     <div>
       <div>
-        <HeaderTab showModal={showModal} btnText='Add New Meeting' />
+        <HeaderTab hide={user.role==="STUDENT"} showModal={showModal} btnText='Add New Meeting' />
 
         <div className="w-full h-[700px] bg-white p-6 rounded-2xl mt-5">
           <MyTable columns={columns} data={meetingArray} />

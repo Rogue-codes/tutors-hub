@@ -25,7 +25,7 @@ export default function Student() {
 
   // Load data from localStorage or use default data
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("data") || "[]");
+    const storedData = JSON.parse(localStorage.getItem("student-data") || "[]");
     setStudentArray(storedData);
   }, []);
 
@@ -37,7 +37,7 @@ export default function Student() {
   };
 
   const addToLocalStorage = (values: any) => {
-    const storedData = JSON.parse(localStorage.getItem("data") || "[]");
+    const storedData = JSON.parse(localStorage.getItem("student-data")!);
     const newStudent = {
       id: uuidv4(), // Generate a unique ID for each student
       ...values,
@@ -47,7 +47,7 @@ export default function Student() {
 
     const newArr = Array.isArray(storedData) ? [...storedData, newStudent] : [newStudent];
 
-    localStorage.setItem("data", JSON.stringify(newArr));
+    localStorage.setItem("student-data", JSON.stringify(newArr));
     setStudentArray(newArr); // Update state in real-time
   };
 

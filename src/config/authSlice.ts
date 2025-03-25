@@ -18,7 +18,7 @@ export interface ITutor {
   first_name:string;
   last_name:string;
   email:string; 
-  department:boolean;
+  department:string;
   is_active:boolean;
   role:string;
   phone:string

@@ -9,6 +9,7 @@ import { Suspense } from "react";
 import Preloader from "./components/preloader/Preloader";
 import Login from "./views/auth/Login";
 import Home from "./views/home/Home";
+import Analytics from "./views/analytics/Analytics";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path={paths.students} element={<Student />} />
           <Route path={paths.meetings} element={<Meeting />} />
           <Route path={paths.tutors} element={<Tutors />} />
+          <Route path={paths.analytics} element={<Analytics />} />
         </Route>
 
         <Route element={<PublicOutlet />}>

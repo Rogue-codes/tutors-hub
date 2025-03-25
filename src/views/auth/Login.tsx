@@ -4,7 +4,7 @@ import { pepps } from "../../assets"; // Ensure this path is correct
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../config/authSlice";
 import { enqueueSnackbar } from "notistack";
-import { student } from "../../utils/data";
+import { student, superAdmin, tutor } from "../../utils/data";
 
 export default function Login() {
   const [userDetails, setUserDetails] = useState({
@@ -21,7 +21,7 @@ export default function Login() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault(); // Corrected spelling from "preventDeafult" to "preventDefault"
-    
+
     if (!validEmails.includes(userDetails.email) || userDetails.password !== "Simple@123") {
       enqueueSnackbar("Invalid Credentials", {
         variant: "error"
@@ -30,7 +30,8 @@ export default function Login() {
     }
 
     // Dispatch login action (uncomment and update as needed)
-    dispatch(loginUser(student));
+    const objectToDispatch = userDetails.email === validEmails[0] ? student : userDetails.email === validEmails[1] ? tutor : superAdmin
+    dispatch(loginUser(objectToDispatch));
     enqueueSnackbar("Login Successful", {
       variant: "success"
     });

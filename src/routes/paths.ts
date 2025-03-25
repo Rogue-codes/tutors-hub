@@ -3,5 +3,6 @@ export const paths = {
     students:'/students',
     meetings:'/meetings',
     tutors:'/tutors',
-    login:'/login'
+    login:'/login',
+    analytics:'/analytics'
 }

@@ -40,20 +40,20 @@ export const student:IStudent  = {
 }
 
 export const tutor: ITutor = {
-  id: "tutor123",
-  first_name: "John",
-  last_name: "Doe",
-  email: "john.doe@example.com",
-  department: true,
+  id: uuidv4(),
+  first_name: "Joseph",
+  last_name: "Agboola",
+  email: "josephagboola@gmail.com",
+  department: "Computer Science",
   is_active: true,
-  role: "Math Tutor",
+  role: "TUTOR",
   phone: "+1234567890"
 };
 
 export const superAdmin: ISuperAdmin = {
   id: "admin456",
-  first_name: "Jane",
+  first_name: "Tavershima",
   last_name: "Smith",
-  email: "jane.smith@example.com",
-  role: "Super Admin"
+  email: "tavershima@gmail.com",
+  role: "SUPER_ADMIN"
 };

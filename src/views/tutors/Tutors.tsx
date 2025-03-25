@@ -12,21 +12,21 @@ export default function Tutors() {
   const [isModalOpen, setIsModalOpen] = useState(false);  
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [form] = Form.useForm();
-  const [studentArray, setStudentArray] = useState<any[]>([]);
+  const [tutorArray, setTutorArray] = useState<any[]>([]);
   const [studentObj, setStudentObj] = useState<any>(null);
 
   console.log("object", studentObj)
 
   const handleGetStudent = (id:string) => {
-       const student = studentArray.find((student)=>student.id === id)
-       setStudentObj(student)
+       const tutor = tutorArray.find((tutor)=>tutor.id === id)
+       setStudentObj(tutor)
        setIsViewModalOpen(true);
   }
 
   // Load data from localStorage or use default data
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("data") || "[]");
-    setStudentArray(storedData);
+    const storedData = JSON.parse(localStorage.getItem("tutor-data") || "[]");
+    setTutorArray(storedData);
   }, []);
 
   const showModal = () => {
@@ -37,18 +37,18 @@ export default function Tutors() {
   };
 
   const addToLocalStorage = (values: any) => {
-    const storedData = JSON.parse(localStorage.getItem("data") || "[]");
-    const newStudent = {
+    const storedData = JSON.parse(localStorage.getItem("tutor-data") || "[]");
+    const newTutor = {
       id: uuidv4(), // Generate a unique ID for each student
       ...values,
       enrolledDate: dayjs(values.enrolledDate).format("YYYY-MM-DD"), // Format date
       status: "Active",
     };
 
-    const newArr = Array.isArray(storedData) ? [...storedData, newStudent] : [newStudent];
+    const newArr = Array.isArray(storedData) ? [...storedData, newTutor] : [newTutor];
 
-    localStorage.setItem("data", JSON.stringify(newArr));
-    setStudentArray(newArr); // Update state in real-time
+    localStorage.setItem("tutor-data", JSON.stringify(newArr));
+    setTutorArray(newArr); // Update state in real-time
   };
 
   const handleOk = () => {
@@ -76,12 +76,6 @@ export default function Tutors() {
     { title: "First Name", dataIndex: "firstName", key: "firstName" },
     { title: "Last Name", dataIndex: "lastName", key: "lastName" },
     { title: "Course", dataIndex: "course", key: "course" },
-    { 
-      title: "Enrolled Date", 
-      dataIndex: "enrolledDate", 
-      key: "enrolledDate",
-      render: (date:any) => dayjs(date).format("MMMM D, YYYY") // Format for display
-    },
     {
       title: "Status",
       dataIndex: "status",
@@ -107,11 +101,11 @@ export default function Tutors() {
       <HeaderTab showModal={showModal} btnText="Add New students"/>
 
       <div className="w-full h-[700px] bg-white p-6 rounded-2xl mt-5">
-        <MyTable columns={columns} data={studentArray} />
+        <MyTable columns={columns} data={tutorArray} />
       </div>
 
       <Modal
-        title="Student Registration"
+        title="Tutor Registration"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
